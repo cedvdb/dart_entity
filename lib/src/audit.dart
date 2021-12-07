@@ -13,7 +13,6 @@ class Audit {
         createdAt = createdAt ?? DateTime.now(),
         updatedAt = updatedAt ?? DateTime.now();
 
-  // TODO createdBy could have the default user there
   Audit.forCreation(this.createdBy)
       : deleted = false,
         createdAt = DateTime.now(),
