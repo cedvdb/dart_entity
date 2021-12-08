@@ -11,4 +11,6 @@ abstract class Entity {
     required this.audit,
     required this.metadata,
   });
+
+  Map<String, dynamic> toMap();
 }
