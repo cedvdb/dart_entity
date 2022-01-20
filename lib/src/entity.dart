@@ -12,5 +12,11 @@ abstract class Entity {
     required this.metadata,
   });
 
-  Map<String, dynamic> toMap();
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'audit': audit.toMap(),
+      'metadata': metadata.toMap(),
+    };
+  }
 }
