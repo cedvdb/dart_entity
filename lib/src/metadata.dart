@@ -1,9 +1,7 @@
 class Metadata {
   final bool hasPendingWrites;
 
-  Metadata({
-    required this.hasPendingWrites,
-  });
+  const Metadata({required this.hasPendingWrites});
 
   Metadata.forCreation() : hasPendingWrites = true;
 
@@ -20,9 +18,6 @@ class Metadata {
   }
 
   @override
-  String toString() => 'Metadata(hasPendingWrites: $hasPendingWrites)';
-
-  @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
@@ -31,4 +26,7 @@ class Metadata {
 
   @override
   int get hashCode => hasPendingWrites.hashCode;
+
+  @override
+  String toString() => 'Metadata(hasPendingWrites: $hasPendingWrites)';
 }

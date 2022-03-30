@@ -4,24 +4,17 @@ class Audit {
   final DateTime createdAt;
   final bool deleted;
 
-  Audit({
-    String? createdBy,
-    DateTime? updatedAt,
-    DateTime? createdAt,
+  const Audit({
+    required this.createdBy,
+    required this.updatedAt,
+    required this.createdAt,
     this.deleted = false,
-  })  : createdBy = createdBy ?? '',
-        createdAt = createdAt ?? DateTime.now(),
-        updatedAt = updatedAt ?? DateTime.now();
+  });
 
   Audit.forCreation(this.createdBy)
       : deleted = false,
         createdAt = DateTime.now(),
         updatedAt = DateTime.now();
-
-  @override
-  String toString() {
-    return 'Audit(createdBy: $createdBy, updatedAt: $updatedAt, createdAt: $createdAt)';
-  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -39,5 +32,29 @@ class Audit {
       createdAt: map['createdAt'],
       deleted: map['deleted'],
     );
+  }
+
+  @override
+  String toString() {
+    return 'Audit(createdBy: $createdBy, updatedAt: $updatedAt, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Audit &&
+        other.createdBy == createdBy &&
+        other.updatedAt == updatedAt &&
+        other.createdAt == createdAt &&
+        other.deleted == deleted;
+  }
+
+  @override
+  int get hashCode {
+    return createdBy.hashCode ^
+        updatedAt.hashCode ^
+        createdAt.hashCode ^
+        deleted.hashCode;
   }
 }
